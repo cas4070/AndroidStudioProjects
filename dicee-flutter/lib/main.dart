@@ -32,29 +32,29 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: FlatButton(
                 onPressed: () {
-                  setState(() {
-                    print('Left button got pressed!');
-                    leftDiceNumber = Random().nextInt(5) + 1;
-                    rightDiceNumber = Random().nextInt(5) + 1;
-                    print('$leftDiceNumber');
-                  });
+                  print('Right button got pressed!');
+                  changeDiceFace();
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png')),
           ),
           Expanded(
             child: FlatButton(
                 onPressed: () {
-                  setState(() {
-                    print('Right button got pressed!');
-                    leftDiceNumber = Random().nextInt(5) + 1;
-                    rightDiceNumber = Random().nextInt(5) + 1;
-                    print('$leftDiceNumber');
-                  });
+                  print('Left button got pressed!');
+                  changeDiceFace();
                 },
                 child: Image.asset('images/dice$rightDiceNumber.png')),
           ),
         ],
       ),
     );
+  }
+
+  void changeDiceFace() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(5) + 1;
+      rightDiceNumber = Random().nextInt(5) + 1;
+    });
+    print('left : $leftDiceNumber, right : $rightDiceNumber');
   }
 }
