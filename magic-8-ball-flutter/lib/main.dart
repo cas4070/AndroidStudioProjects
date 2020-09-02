@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() {
   return runApp(
-    MaterialApp(home: BallPage()),
+    MaterialApp(
+      home: BallPage(),
+    ),
   );
 }
 
@@ -14,10 +16,9 @@ class Ball extends StatefulWidget {
 class _BallState extends State<Ball> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Center(
+    return Center(
       child: Image.asset('images/ball1.png'),
-    ));
+    );
   }
 }
 
