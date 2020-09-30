@@ -25,14 +25,14 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List scoreKeeper = <Icon>[];
-  List questions = <String>[
+  List<Icon> scoreKeeper = [];
+  List<String> questions = [
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.',
   ];
-
   int questionNumber = 0;
+  List<bool> answers = [false, true, true];
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,12 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+                if (correctAnswer == true) {
+                  print('User got it right');
+                } else {
+                  print('User got it wrong');
+                }
                 setState(
                   () {
                     questionNumber = questionNumber + 1;
@@ -92,6 +98,13 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == false) {
+                  print('User got it right');
+                } else {
+                  print('User got it wrong');
+                }
                 setState(
                   () {
                     questionNumber = questionNumber + 1;
