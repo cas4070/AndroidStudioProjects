@@ -31,7 +31,6 @@ class _QuizPageState extends State<QuizPage> {
 
   QuestionBrain questionBrain = QuestionBrain();
 
-  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,7 +43,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionBrain.getQuestionText(questionNumber),
+                questionBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -68,8 +67,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    questionBrain.getCorrectAnswer(questionNumber);
+                bool correctAnswer = questionBrain.getCorrectAnswer();
                 if (correctAnswer == true) {
                   print('User got it right');
                 } else {
@@ -77,7 +75,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
                 setState(
                   () {
-                    questionNumber = questionNumber + 1;
+                    questionBrain.nextQuestion();
                   },
                 );
               },
@@ -97,8 +95,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    questionBrain.getCorrectAnswer(questionNumber);
+                bool correctAnswer = questionBrain.getCorrectAnswer();
 
                 if (correctAnswer == false) {
                   print('User got it right');
@@ -107,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
                 setState(
                   () {
-                    questionNumber = questionNumber + 1;
+                    questionBrain.nextQuestion();
                   },
                 );
               },
